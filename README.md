@@ -34,7 +34,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Localhost 5500](http://127.0.0.1:5500/)
+- Solution URL: [Localhost 5500](https://time-tracking-dashboard-git-main-beealmightys-projects.vercel.app/)
 - Live Site URL: [Vercel](https://your-live-site-url.com)
 
 ## My process
