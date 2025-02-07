@@ -39,59 +39,34 @@ const getData = async (num, activity1, activity2, timeframe)  => {
   }
 }
 
-// WEEKLY DATA
-weekly.addEventListener('click', () => {
-  weekly.classList.add('active')
+const setTimeFrame = (timeframes) => {
   daily.classList.remove('active')
-  monthly.classList.remove('active')
-  getData(0, workDur, workPrev, 'weekly');
-  getData(1, playDur, playPrev, 'weekly');
-  getData(2, studyDur, studyPrev, 'weekly');
-  getData(3, exerciseDur, exercisePrev, 'weekly');
-  getData(4, socialDur, socialPrev, 'weekly');
-  getData(5, selfcareDur, selfcarePrev, 'weekly');
-  work.textContent = `Last Week - `;
-  play.textContent = `Last Week - `;
-  study.textContent = `Last Week - `;
-  exercise.textContent = `Last Week - `;
-  social.textContent = `Last Week - `;
-  selfcare.textContent = `Last Week - `;
-})
-
-// MONTHLY DATA
-monthly.addEventListener('click', () => {
-  monthly.classList.add('active')
-  weekly.classList.remove('active')
-  daily.classList.remove('active')
-  getData(0, workDur, workPrev, 'monthly');
-  getData(1, playDur, playPrev, 'monthly');
-  getData(2, studyDur, studyPrev, 'monthly');
-  getData(3, exerciseDur, exercisePrev, 'monthly');
-  getData(4, socialDur, socialPrev, 'monthly');
-  getData(5, selfcareDur, selfcarePrev, 'monthly');
-  work.textContent = `Last Month - `;
-  play.textContent = `Last Month - `;
-  study.textContent = `Last Month - `;
-  exercise.textContent = `Last Month - `;
-  social.textContent = `Last Month - `;
-  selfcare.textContent = `Last Month - `;
-})
-
-// DAILY DATA
-daily.addEventListener('click', () => {
-  daily.classList.add('active')
   weekly.classList.remove('active')
   monthly.classList.remove('active');
-  getData(0, workDur, workPrev, 'daily');
-  getData(1, playDur, playPrev, 'daily');
-  getData(2, studyDur, studyPrev, 'daily');
-  getData(3, exerciseDur, exercisePrev, 'daily');
-  getData(4, socialDur, socialPrev, 'daily');
-  getData(5, selfcareDur, selfcarePrev, 'daily');
-  work.textContent = `Previous Day - `;
-  play.textContent = `Previous Day - `;
-  study.textContent = `Previous Day - `;
-  exercise.textContent = `Previous Day - `;
-  social.textContent = `Previous Day - `;
-  selfcare.textContent = `Previous Day - `;
-})
+
+  $(`.${timeframes}`).classList.add('active');
+
+  getData(0, workDur, workPrev, timeframes);
+  getData(1, playDur, playPrev, timeframes);
+  getData(2, studyDur, studyPrev, timeframes);
+  getData(3, exerciseDur, exercisePrev, timeframes);
+  getData(4, socialDur, socialPrev, timeframes);
+  getData(5, selfcareDur, selfcarePrev, timeframes);
+
+  const timeframeText = {
+    daily: 'Previous Day - ',
+    weekly: 'Last Week - ',
+    monthly: 'Last month - ',
+  }
+
+  work.textContent = timeframeText.timeframes;
+  play.textContent = timeframeText.timeframes;
+  study.textContent = timeframeText.timeframes;
+  exercise.textContent = timeframeText.timeframes;
+  social.textContent = timeframeText.timeframes;
+  selfcare.textContent = timeframeText.timeframes;
+}
+
+weekly.addEventListener('click', () => setTimeFrame('weekly'))
+monthly.addEventListener('click', () => setTimeFrame('monthly'))
+daily.addEventListener('click', () => setTimeFrame('daily'))
